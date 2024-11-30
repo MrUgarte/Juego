@@ -1,11 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Perfil de Juego</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/perfil.css">
 </head>
 <body>
-    <p>prueba</p>
+    <div class="profile-container">
+      <!-- Contenedor de nombre usuario y nivel-->
+        <div class="profile-username">
+            <h1>UserName</h1>
+            <label>Nivel <span id="level"></span></label> <!-- ID agregado para actualizar el nivel dinámicamente -->
+        </div>
+        <div class="profile-header">
+            <!-- Carga de imagen de perfil -->
+            <img src="https://i.pinimg.com/736x/b1/71/fd/b171fd3c60bf6a657373614f1eaf4941.jpg" alt="Profile Picture" class="profile-img">
+            
+            <!-- Gráfica de estadísticas -->
+            <div class="graph-container">
+                <canvas id="statsGraph"></canvas>
+            </div>
+
+            <!-- Información de perfil -->
+            <div class="profile-info">
+              <h2>Información de Perfil</h2>
+                <label>Nivel Actual: <span id="lvlActual"></span></label>
+                <label>XP Actual : <span id="xp"></span></label>
+                <label>XP Necesaria : <span id="xpTotal"></span></label>
+                <label>Puntos Disponibles : <span id="points"></span></label>
+                <button onclick="gainXP()" class="subir-nivel-button">Subir de Nivel</button>
+                <div class="stats">
+                    <div class="stat-item">
+                      <button onclick="changeStat('strength', -1)">-</button>
+                      <label>Fuerza: <span id="strength"></span></label>
+                      <button onclick="changeStat('strength', 1)">+</button>
+                    </div>
+                    <div class="stat-item">
+                      <button onclick="changeStat('dexterity', -1)">-</button>
+                      <label>Destreza: <span id="dexterity"></span></label>
+                      <button onclick="changeStat('dexterity', 1)">+</button>
+                    </div>
+                    <div class="stat-item">
+                      <button onclick="changeStat('agility', -1)">-</button>
+                      <label>Agilidad: <span id="agility"></span></label>
+                      <button onclick="changeStat('agility', 1)">+</button>
+                    </div>
+                    <div class="stat-item">
+                      <button onclick="changeStat('endurance', -1)">-</button>
+                      <label>Aguante: <span id="endurance"></span></label>
+                      <button onclick="changeStat('endurance', 1)">+</button>
+                    </div>
+                    <div class="stat-item">
+                      <button onclick="changeStat('resistance', -1)">-</button>
+                      <label>Resistencia: <span id="resistance"></span></label>
+                      <button onclick="changeStat('resistance', 1)">+</button>
+                    </div>
+                  </div>
+                  <!-- Barra de vida y stamina -->
+                  <div class="hud-container">
+                    <label>Vida</label>
+                    <div class="health-bar" id="healthBar"></div>
+                    <label>Stamina</label>
+                    <div class="stamina-bar" id="staminaBar"></div>
+                  </div>
+                  <!-- Daño, Destreza y Agilidad -->
+                  <div class="hud-container">
+                    <label>Daño: <span id="damage"></span></label>
+                    <label>Velocidad de ataque: <span id="speed"></span></label>
+                    <label>Movimientos: <span id="skill"></span></label>
+                  </div>
+            </div>
+        </div>  
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="/js/stats.js"></script>
+    <script type="module" src="/js/graficoStats.js"></script>    
 </body>
 </html>
